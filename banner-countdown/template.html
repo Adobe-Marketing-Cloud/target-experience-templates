@@ -1,0 +1,154 @@
+
+<div id="att_banner_countdown"></div><script>
+// Banner - Countdown
+var att_config = {
+  // =========================== USER DEFINED CONFIGURATION ===========================
+
+  // Use the main title to grab attention. Try to keep it under 40 characters!
+  title: "Hurry. One week super sale.",
+
+  // The sub title should entice your customer. Keep it short and sweet under 80 characters.
+  subtitle: "When you buy one or more of more of our products you get 30% of the second one.",
+
+  // Host your image and place a link to it here. The image should be clear and concise. Try to keep the dimensions to 400px wide x 500px high.
+  imageUrl: "https://as1.ftcdn.net/jpg/00/60/94/62/500_F_60946241_EaM4KUyopj3l4eCkGwp13YV5AYaJ0924.jpg",
+
+  // The button text should provide clear instructions. Keep it under 30 characters for maximum impact.
+  buttonText: "GO HERE",
+
+  // Once the customer has clicked, where do you want to redirect them?
+  buttonLink: "https://www.adobe.com/marketing-cloud/target.html",
+
+  // Date and time to count down to.
+  countdownDate: {
+    year: 2018,
+    month: 12,
+    day: 24,
+    hour: 23,
+    minute: 59,
+    second: 59
+  }
+  // =========================== END USER DEFINED CONFIGURATION ===========================
+};
+
+
+(function(){'use strict';
+
+var title = att_config.title != null && att_config.title ? att_config.title : '';
+var subtitle = att_config.subtitle != null && att_config.subtitle ? att_config.subtitle : '';
+var buttonText = att_config.buttonText != null && att_config.buttonText ? att_config.buttonText : '';
+var buttonLink = att_config.buttonLink != null && att_config.buttonLink ? att_config.buttonLink : '';
+
+var template = '\n<div class="att_banner_contents">\n  <h1 class="att_banner_header">' + title + '</h1>\n  <div class="att_banner_countdown">\n    <div class="att_banner_countdown_days">\n      <h1 id="att_days">0</h1>\n      <p>DAYS</p>\n    </div>\n    <div class="att_banner_countdown_hours">\n      <h1 id="att_hours">0</h1>\n      <p>HOURS</p>\n    </div>\n    <div class="att_banner_countdown_minutes">\n      <h1 id="att_minutes">0</h1>\n      <p>MINUTES</p>\n    </div>\n    <div class="att_banner_countdown_seconds">\n      <h1 id="att_seconds">0</h1>\n      <p>SECONDS</p>\n    </div>\n  </div>\n  <p class="att_banner_subhheader">' + subtitle + '</p>\n  <a href="' + buttonLink + '" class="att_banner_button" rel="nofollow noopener">' + buttonText + '</a>\n</div>\n';
+
+var bgImage = att_config.imageUrl != null && att_config.imageUrl ? 'background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)), url(' + att_config.imageUrl + ');' : '';
+
+var style = '\n#att_banner_countdown {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 500px;\n  margin: 0;\n  padding: 0;\n  ' + bgImage + '\n  background-size: cover;\n  background-position: center;\n}\n.att_banner_countdown * {\n  font-family: Helvetica, Arial, sans-serif;\n}\n.att_banner_contents {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n  margin: 10px;\n  height: calc(100% - 20px);\n  width: calc(100% - 20px);\n}\n.att_banner_header {\n  text-align: center;\n  font-size: 28pt;\n  color: #221E1F;\n  margin: 0;\n  padding: 1rem;\n  line-height: 1.25;\n}\n.att_banner_subhheader {\n  font-size: 14pt;\n  text-align: center;\n  color: #221E1F;\n  line-height: 1.25;\n  font-weight: 400;\n  margin: 10px;\n  padding: 0;\n  max-width: 60%;\n  margin-bottom: 20px;\n}\n.att_banner_button {\n  min-height: 42px;\n  width: auto;\n  background-color: #4CAF50;\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n  min-width: 220px;\n}\n.att_banner_button:hover {\n  background-color: #388E3C;\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_banner_button:active {\n  background-color: #4CAF50;\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_banner_button[disabled=disabled],\n.att_banner_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n.att_banner_countdown {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  margin: 20px;\n}\n.att_banner_countdown div {\n  width: 80px;\n  height: 80px;\n  background-color: #4A4A4A;\n  margin: 12px;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  opacity: 0.8;\n}\n.att_banner_countdown div h1 {\n  font-size: 26pt;\n  color: white;\n  margin: 0;\n  padding: 0;\n}\n.att_banner_countdown div p {\n  font-size: 8pt;\n  color: white;\n  margin: 2px 0 0 0;\n  padding: 0;\n  line-height: 1;\n}\n';
+
+var handlers = function handlers() {
+  setInterval(function () {
+    var diff = calculateCountdown();
+    setDatetime(diff);
+  }, 1000);
+
+  function setDatetime(diff) {
+    if (diff.days > 0) {
+      document.getElementById('att_days').innerText = diff.days;
+      if (diff.days == 1) {
+        document.querySelector('.att_banner_countdown_days p').textContent = 'DAY';
+      }
+    } else {
+      document.querySelector('.att_banner_countdown_days').style.display = 'none';
+    }
+
+    if (diff.hours > 0) {
+      document.getElementById('att_hours').innerText = diff.hours;
+      if (diff.hours == 1) {
+        document.querySelector('.att_banner_countdown_hours p').textContent = 'HOUR';
+      } else {
+        document.querySelector('.att_banner_countdown_hours p').textContent = 'HOURS';
+      }
+    } else if (diff.hours <= 0 && diff.days <= 0) {
+      document.querySelector('.att_banner_countdown_hours').style.display = 'none';
+    }
+
+    if (diff.minutes > 0) {
+      document.getElementById('att_minutes').innerText = diff.minutes;
+      if (diff.minutes == 1) {
+        document.querySelector('.att_banner_countdown_minutes p').textContent = 'MINUTE';
+      } else {
+        document.querySelector('.att_banner_countdown_minutes p').textContent = 'MINUTES';
+      }
+    } else if (diff.minutes <= 0 && diff.hours <= 0 && diff.days <= 0) {
+      document.querySelector('.att_banner_countdown_minutes').style.display = 'none';
+    }
+
+    if (diff.seconds >= 0) {
+      document.getElementById('att_seconds').innerText = diff.seconds;
+      if (diff.seconds == 1) {
+        document.querySelector('.att_banner_countdown_seconds p').textContent = 'SECOND';
+      } else {
+        document.querySelector('.att_banner_countdown_seconds p').textContent = 'SECONDS';
+      }
+    } else if (diff.seconds <= 0 && diff.minutes <= 0 && diff.hours <= 0 && diff.days <= 0) {
+      document.querySelector('.att_banner_countdown_seconds').style.display = 'none';
+    }
+  }
+};
+
+function calculateCountdown() {
+  var d = att_config.countdownDate;
+  var now = new Date();
+  var target = new Date(d.year, d.month - 1, d.day, d.hour, d.minute, d.second);
+  var diff = Math.floor(target - now);
+  var days = Math.floor(diff / (24 * 60 * 60 * 1000));
+  var hours = Math.floor(diff % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
+  var minutes = Math.floor(diff % (60 * 60 * 1000) / (60 * 1000));
+  var seconds = Math.floor(diff % (60 * 1000) / 1000);
+  return {
+    days: days,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds
+  };
+}
+
+injector({
+  el: document.getElementById('att_banner_countdown'),
+  template: template,
+  style: style,
+  handlers: handlers
+});
+'use strict';
+
+/**
+ * Injects template code into page
+ * Pass in the following attributes:
+ *  params.name = 'Template Name'
+ *  params.template = `Html template goes here`
+ *  params.style = `CSS Styles goes here, will be placed inside style tag`
+ *  params.handlers = function () {execute all handlers here}
+ *
+ * @param {Object} params
+ */
+function injector(params) {
+  // Inject the template
+  var templateTarget = params.el != null && params.el ? params.el : document.body;
+  var templateContainer = document.createElement('div');
+  if (params.templateClass) {
+    templateContainer.classList.add(params.templateClass);
+  }
+  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  templateTarget.appendChild(templateContainer);
+
+  // Inject the css
+  var cssContainer = document.createElement('style');
+  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  document.head.appendChild(cssContainer);
+
+  // Register the handlers
+  if (params.handlers != null && typeof params.handlers === 'function') {
+    params.handlers();
+  }
+}})();
+</script>

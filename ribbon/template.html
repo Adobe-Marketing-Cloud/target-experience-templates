@@ -1,0 +1,71 @@
+<script>
+// Ribbon
+var att_config = {
+  // =========================== USER DEFINED CONFIGURATION ===========================
+
+  // Non clickable text to display in the ribbon
+  ribbonText: "See the promotion we are running.",
+
+  // Clickable text to display in the ribbon
+  ribbonLinkText: "Details",
+
+  // Clickable text links to this URL
+  ribbonLink: "https://www.adobe.com/marketing-cloud/target.html"
+
+  // =========================== END USER DEFINED CONFIGURATION ===========================
+};
+
+
+(function(){'use strict';
+
+var text = att_config.ribbonText != null && att_config.ribbonText ? att_config.ribbonText : '';
+var ribbonLinkText = att_config.ribbonLinkText != null && att_config.ribbonLinkText ? att_config.ribbonLinkText : '';
+var ribbonLink = att_config.ribbonLink != null && att_config.ribbonLink ? att_config.ribbonLink : '';
+
+var template = '\n  <p class="att_ribbon_text">' + text + '</p>\n  <a class="att_ribbon_link" target="_blank" rel="nofollow noopener" href="' + ribbonLink + '">' + ribbonLinkText + '</a>\n';
+
+var style = '\n  .att_ribbon_active {\n    margin-top: 40px;\n  }\n  .att_ribbon * {\n    font-family: helvetica, arial, sans-serif;\n  }\n  .att_ribbon {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 40px;\n    width: 100%;\n    background-color: #4A4A4A;\n    color: #ffffff;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: row;\n  }\n  .att_ribbon_text {\n    margin: 0;\n    padding: 0;\n    font-size: 11pt;\n    line-height: 1;\n    color: #ffffff;\n  }\n  .att_ribbon_link {\n    margin: 0 0 0 0.5rem;\n    padding: 0;\n    font-size: 11pt;\n    line-height: 1;\n    text-decoration: underline;\n    color: #ffffff;\n  }\n';
+
+var handlers = function handlers() {
+  document.body.classList.add('att_ribbon_active');
+};
+
+injector({
+  templateClass: 'att_ribbon',
+  template: template,
+  style: style,
+  handlers: handlers
+});
+'use strict';
+
+/**
+ * Injects template code into page
+ * Pass in the following attributes:
+ *  params.name = 'Template Name'
+ *  params.template = `Html template goes here`
+ *  params.style = `CSS Styles goes here, will be placed inside style tag`
+ *  params.handlers = function () {execute all handlers here}
+ *
+ * @param {Object} params
+ */
+function injector(params) {
+  // Inject the template
+  var templateTarget = params.el != null && params.el ? params.el : document.body;
+  var templateContainer = document.createElement('div');
+  if (params.templateClass) {
+    templateContainer.classList.add(params.templateClass);
+  }
+  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  templateTarget.appendChild(templateContainer);
+
+  // Inject the css
+  var cssContainer = document.createElement('style');
+  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  document.head.appendChild(cssContainer);
+
+  // Register the handlers
+  if (params.handlers != null && typeof params.handlers === 'function') {
+    params.handlers();
+  }
+}})();
+</script>

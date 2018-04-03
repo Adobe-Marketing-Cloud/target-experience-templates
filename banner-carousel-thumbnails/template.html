@@ -1,0 +1,126 @@
+
+<div id="att_banner_thumbnails"></div><script>
+// Banner - Carousel Thumbnails
+var att_config = {
+  // =========================== USER DEFINED CONFIGURATION ===========================
+  // Host your images and place the URLs for the images below. These links
+  // must be direct links to the image file (it should end in .jpg, .png, etc.) and
+  // each link must be surrounded by quotes. Links should be comma separated.
+  //
+  // This carousel has a maximum image limit of 3 images.
+  thumbnails: [
+    {
+      image: "https://as2.ftcdn.net/jpg/01/33/94/23/500_F_133942397_uqPdRkIqsfaS3Ue2WJSZNQv9nkC7YCqJ.jpg",
+      text: "See this photo",
+      link: "https://www.adobe.com/marketing-cloud/target.html"
+    },
+    {
+      image: "https://as1.ftcdn.net/jpg/01/34/26/28/500_F_134262826_7lyTxlKTKIvVhgr2wVWziqy2mnsmK4TI.jpg",
+      text: "Join our event",
+      link: "https://www.adobe.com/marketing-cloud/target.html"
+    },
+    {
+      image: "https://as1.ftcdn.net/jpg/01/34/26/24/500_F_134262463_sah6EYW1cRDO4I7o39WuvTMCC6rLvSIe.jpg",
+      text: "Don't miss this sale",
+      link: "https://www.adobe.com/marketing-cloud/target.html"
+    }
+  ]
+  // =========================== END USER DEFINED CONFIGURATION ===========================
+};
+
+
+
+
+(function(){'use strict';
+
+// Element.closest() polyfill
+if (!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
+if (!Element.prototype.closest) Element.prototype.closest = function (s) {
+  var el = this;
+  if (!document.documentElement.contains(el)) return null;
+  do {
+    if (el.matches(s)) return el;
+    el = el.parentElement || el.parentNode;
+  } while (el !== null && el.nodeType === 1);
+  return null;
+};
+
+var thumbnails = att_config.thumbnails != null && att_config.thumbnails ? att_config.thumbnails : [];
+
+var thumbnailHtml = "<div class='att_image_thumbnails'>";
+for (var i = 0; i < thumbnails.length; i++) {
+  var thumbnail = thumbnails[i];
+  thumbnailHtml += '<div class="att_image_thumbnail att_image_thumbnail_' + i + '" data-idx="' + i + '"">\n    <div style="background-image:url(' + thumbnail.image + ')"></div>\n    <p>' + thumbnail.text + '</p>\n  </div>';
+}
+
+var template = '\n<div class="att_banner_thumbnails_container">\n  <div class="att_banner_thumbnails_content">\n    <a href="' + thumbnails[0].link + '" target="_blank" rel="nofollow nooopener"><img class="att_image_main" src="' + thumbnails[0].image + '"></img></a>\n    ' + thumbnailHtml + '\n  </div>\n</div>\n';
+
+var style = '\n.att_banner_thumbnails_container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 800px;\n  width: 100%;\n}\n.att_banner_thumbnails_content {\n  max-width: 950px;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 5px;\n}\n.att_image_main {\n  width: 100%;\n  max-width: 950px;\n  height: 550px;\n  background-size: cover;\n  background-position: center;\n}\n.att_banner_thumbnails_content a {\n  height: 550px;\n  margin: 0;\n  padding: 0;\n}\n.att_image_thumbnails {\n  height: 200px;\n  width: 100%;\n  max-width: 950px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items; center;\n}\n.att_image_thumbnail {\n  width: 100%;\n  max-width: calc(950px / 3);\n  max-height: 170px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n}\n.att_image_thumbnails div {\n  height: 100%;\n  width: 100%;\n  background-size: cover;\n  background-position: center;\n  z-index: 2;\n}\n.att_image_thumbnails p {\n  margin: 0;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n.att_active {\n  background-color: #0585FF;\n  color: #fff;\n}\n.att_active::before {\n  content: \'\';\n  position: absolute;\n  top: -8px;\n  left: 50%;\n  transform: translate(-50%, 0) rotate(45deg);\n  width: 16px;\n  height: 16px;\n  background-color: #0585FF;\n  z-index: 1;\n}\n';
+
+var handlers = function handlers() {
+  // Set initial image
+  setImage(0);
+
+  document.querySelectorAll('.att_image_thumbnail').forEach(function (ele) {
+    ele.addEventListener('click', function (event) {
+      var target = event.target || event.srcElement;
+      var targetEl = target.closest('.att_image_thumbnail');
+      var idx = targetEl.dataset.idx != null && targetEl.dataset.idx ? targetEl.dataset.idx : 0;
+      setImage(idx);
+    });
+  });
+
+  function setImage(idx) {
+    att_config.active = idx;
+    var active = att_config.thumbnails[att_config.active];
+    // Set main image
+    document.querySelector('.att_image_main').src = active.image;
+    // Remove active class
+    document.querySelectorAll('.att_image_thumbnail').forEach(function (ele) {
+      ele.classList.remove('att_active');
+    });
+    // Set active class
+    document.querySelector('.att_image_thumbnail_' + idx).classList.add('att_active');
+  }
+};
+
+injector({
+  el: document.getElementById('att_banner_thumbnails'),
+  template: template,
+  style: style,
+  handlers: handlers
+});
+'use strict';
+
+/**
+ * Injects template code into page
+ * Pass in the following attributes:
+ *  params.name = 'Template Name'
+ *  params.template = `Html template goes here`
+ *  params.style = `CSS Styles goes here, will be placed inside style tag`
+ *  params.handlers = function () {execute all handlers here}
+ *
+ * @param {Object} params
+ */
+function injector(params) {
+  // Inject the template
+  var templateTarget = params.el != null && params.el ? params.el : document.body;
+  var templateContainer = document.createElement('div');
+  if (params.templateClass) {
+    templateContainer.classList.add(params.templateClass);
+  }
+  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  templateTarget.appendChild(templateContainer);
+
+  // Inject the css
+  var cssContainer = document.createElement('style');
+  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
+  document.head.appendChild(cssContainer);
+
+  // Register the handlers
+  if (params.handlers != null && typeof params.handlers === 'function') {
+    params.handlers();
+  }
+}})();
+</script>

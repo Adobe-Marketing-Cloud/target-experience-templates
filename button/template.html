@@ -8,7 +8,9 @@ var att_config = {
   buttonText: "GO HERE",
 
   // Once the customer has clicked, where do you want to redirect them?
-  buttonLink: "https://www.adobe.com/marketing-cloud/target.html"
+  buttonLink: "https://www.adobe.com/marketing-cloud/target.html",
+
+  buttonColor: '#388E3C'
 
   // =========================== END USER DEFINED CONFIGURATION ===========================
 };
@@ -18,10 +20,13 @@ var att_config = {
 
 var buttonText = att_config.buttonText != null && att_config.buttonText ? att_config.buttonText : '';
 var buttonLink = att_config.buttonLink != null && att_config.buttonLink ? att_config.buttonLink : '';
+var buttonColor = att_config.buttonColor != null && att_config.buttonColor ? att_config.buttonColor : '';
+var hoverColor = LightenDarkenColor(buttonColor, -20);
+var activeColor = LightenDarkenColor(buttonColor, 20);
 
 var template = '';
 
-var style = '\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: 42px;\n  min-width: 220px;\n  background-color: #4CAF50;\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: #388E3C;\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: #4CAF50;\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n';
+var style = '\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: 42px;\n  max-height: 42px;\n  min-width: 220px;\n  background-color: ' + buttonColor + ';\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: ' + hoverColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: ' + activeColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n';
 
 var handlers = function handlers() {
   // Set up button
@@ -35,6 +40,22 @@ injector({
   style: style,
   handlers: handlers
 });
+
+function LightenDarkenColor(col, amt) {
+  var usePound = true;
+  if (col[0] == "#") {
+    col = col.slice(1);
+    usePound = true;
+  }
+  var num = parseInt(col, 16);
+  var r = (num >> 16) + amt;
+  if (r > 255) r = 255;else if (r < 0) r = 0;
+  var b = (num >> 8 & 0x00FF) + amt;
+  if (b > 255) b = 255;else if (b < 0) b = 0;
+  var g = (num & 0x0000FF) + amt;
+  if (g > 255) g = 255;else if (g < 0) g = 0;
+  return (usePound ? "#" : "") + (g | b << 8 | r << 16).toString(16);
+}
 'use strict';
 
 /**

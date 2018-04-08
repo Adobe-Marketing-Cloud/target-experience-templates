@@ -9,6 +9,9 @@ var att_config = {
   // The sub title should entice your customer. Keep it short and sweet under 80 characters.
   subtitle: "Here are more details about this deal, don't miss out on this great deal.",
 
+  // Customize the link that closes the lightbox.
+  declineText: "NO THANKS",
+
   // Host your image and place a link to it here. The image should be clear and concise. Try to keep the dimensions to 400px wide x 500px high.
   imageUrl: "https://as1.ftcdn.net/jpg/00/60/94/62/500_F_60946241_EaM4KUyopj3l4eCkGwp13YV5AYaJ0924.jpg",
 
@@ -31,8 +34,9 @@ var title = att_config.title != null && att_config.title ? att_config.title : ''
 var subtitle = att_config.subtitle != null && att_config.subtitle ? att_config.subtitle : '';
 var buttonText = att_config.buttonText != null && att_config.buttonText ? att_config.buttonText : '';
 var buttonLink = att_config.buttonLink != null && att_config.buttonLink ? att_config.buttonLink : '';
+var declineText = att_config.declineText != null && att_config.declineText ? att_config.declineText : '';
 
-var template = '\n<div id="att_lightbox">\n  <div class="att_lightbox_background"></div>\n  <div class="att_popup">\n    <div class="att_lightbox_left">\n    </div>\n    <div class="att_lightbox_right">\n      <div class="att_lightbox_right_contents">\n        <h1 class="att_lightbox_header">' + title + '</h1>\n        <p class="att_lightbox_subhheader">' + subtitle + '</p>\n        <a href="' + buttonLink + '" class="att_lightbox_button" rel="nofollow noopener">' + buttonText + '</a>\n        <a id="att_lightbox_close" href="#">NO THANKS</a>\n      </div>\n    </div>\n  </div>\n</div>\n';
+var template = '\n<div id="att_lightbox">\n  <div class="att_lightbox_background"></div>\n  <div class="att_popup">\n    <div class="att_lightbox_left">\n    </div>\n    <div class="att_lightbox_right">\n      <div class="att_lightbox_right_contents">\n        <h1 class="att_lightbox_header">' + title + '</h1>\n        <p class="att_lightbox_subhheader">' + subtitle + '</p>\n        <a href="' + buttonLink + '" class="att_lightbox_button" rel="nofollow noopener">' + buttonText + '</a>\n        <a id="att_lightbox_close" href="#">' + declineText + '</a>\n      </div>\n    </div>\n  </div>\n</div>\n';
 
 var bgImage = att_config.imageUrl != null && att_config.imageUrl ? 'background-image: url(' + att_config.imageUrl + ');' : '';
 

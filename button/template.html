@@ -10,7 +10,13 @@ var att_config = {
   // Once the customer has clicked, where do you want to redirect them?
   buttonLink: "https://www.adobe.com/marketing-cloud/target.html",
 
-  buttonColor: '#388E3C'
+  buttonColor: '#388E3C',
+
+  // Button width in pixels
+  buttonWidth: 120,
+
+  // Button height in pixels
+  buttonHeight: 40
 
   // =========================== END USER DEFINED CONFIGURATION ===========================
 };
@@ -23,10 +29,12 @@ var buttonLink = att_config.buttonLink != null && att_config.buttonLink ? att_co
 var buttonColor = att_config.buttonColor != null && att_config.buttonColor ? att_config.buttonColor : '';
 var hoverColor = LightenDarkenColor(buttonColor, -20);
 var activeColor = LightenDarkenColor(buttonColor, 20);
+var buttonWidth = att_config.buttonWidth != null && att_config.buttonWidth ? att_config.buttonWidth : '120';
+var buttonHeight = att_config.buttonHeight != null && att_config.buttonHeight ? att_config.buttonHeight : '40';
 
 var template = '';
 
-var style = '\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: 42px;\n  max-height: 42px;\n  min-width: 220px;\n  background-color: ' + buttonColor + ';\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: ' + hoverColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: ' + activeColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n';
+var style = '\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: ' + buttonHeight + 'px;\n  width: ' + buttonWidth + 'px;\n  background-color: ' + buttonColor + ';\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: ' + hoverColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: ' + activeColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n';
 
 var handlers = function handlers() {
   // Set up button

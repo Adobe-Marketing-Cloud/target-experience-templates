@@ -7,7 +7,6 @@ There are three configurable fields in this template:
 1. **Text** The text will display under the smaller image
 1. **Link**  The link will be initiated when the larger image is clicked
 
-This carousel has a maximum image limit of 3 images.  
 
 ### How to use
 To use this experience template, copy the entire code sample from "template.html" in this folder into Adobe Target in one of two ways. After copying in to Adobe Target, you can modify the images, text, and links as needed.
@@ -17,6 +16,10 @@ This template can be input in to Adobe Target as an HTML Offer and then referenc
 
 ##### Option 2
 This template can also be directly inserted in to Adobe Target in the Visual Experience Composer (VEC) using the "Edit Text/HTML" option when selecting the relevent container. To learn more about the VEC options [click here](https://marketing.adobe.com/resources/help/en_US/target/target/r_viztarget_options.html)
+
+### Limits
+* This carousel has a maximum image limit of 3 images.  
+
 
 ### Resources
 * [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 

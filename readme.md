@@ -1,10 +1,12 @@
-# Adobe Target Templates
+#target-experience-templates
+Adobe Target Experience Templates are pre-coded samples with configurable inputs to be used in Adobe Target Visual Experience Composer to execute some common use marketer use cases.
 
-Enhance your tests with these pre-built and configurable templates.
+* [Wiki](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/wiki)
+* [Demos](https://helpx.adobe.com/support/target.html)
+* [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues)
 
-## Quickstart
+These experience templates are provided free to developers and marketers as a starting point to execute some common external use cases in Adobe Target - either via the Visual Experience Composer or Form Composer. Customization may be required to integrate succesfully with your webpage or platform architecture.
 
-Copy and paste one of these templates into an experience and customize it by editing the friendly Javascript configuration.
+This repository is a work in progress and feedback and contribution is most welcome!
 
-## Resources
-1. [Adobe Target](https://www.adobe.com/marketing-cloud/target.html)
+- Adobe Target Team 

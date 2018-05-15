@@ -9,8 +9,8 @@ There are three configurable fields in this template:
 
 This carousel has a maximum image limit of 3 images.  
 
-### Where to insert
-To use, copy the full code from "template.html" in this folder into Adobe Target in one of two ways. After copying in to Adobe Target, you can modify the images, text, and links as needed.
+### How to use
+To use this experience template, copy the entire code sample from "template.html" in this folder into Adobe Target in one of two ways. After copying in to Adobe Target, you can modify the images, text, and links as needed.
 
 ##### Option 1
 This template can be input in to Adobe Target as an HTML Offer and then referenced from Visual Composer or Form Composer by selecting "Swap Offer" from relevent context menus.  To learn more about offers [click here](https://marketing.adobe.com/resources/help/en_US/target/target/c_manage_content.html)

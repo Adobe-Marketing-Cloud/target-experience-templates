@@ -1,6 +1,8 @@
 # banner-carousel-thumbnails
 
-This experience template is a rotating carousel. There are three configurable fields in this template:
+This experience template is a rotating carousel, commonly used on home pages and landing pages or other high-volume entry pages. This carousel will not automatically rotate through the images and can be interacted with directly by clicking the smaller images below the primary image.
+
+There are three configurable fields in this template:
 1. **Image** The image must be hosted on your content delivery network (CDN)
 1. **Text** The text will display under the smaller image
 1. **Link**  The link will be initiated when the larger image is clicked

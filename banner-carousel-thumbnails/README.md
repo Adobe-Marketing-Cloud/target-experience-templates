@@ -5,8 +5,7 @@ This experience template is a rotating carousel. There are three configurable fi
 1. **Text** The text will display under the smaller image
 1. **Link**  The link will be initiated when the larger image is clicked
 
-This carousel has a maximum image limit of 3 images.
-
+This carousel has a maximum image limit of 3 images.  
 
 ### Where to insert
 
@@ -16,6 +15,9 @@ This template can be input in to Adobe Target as an HTML Offer and then referenc
 ##### Option 2
 This template can also be directly inserted in to Adobe Target in the Visual Experience Composer (VEC) using the "Edit Text/HTML" option when selecting the relevent container. To learn more about the VEC options [click here](https://marketing.adobe.com/resources/help/en_US/target/target/r_viztarget_options.html)
 
+### Resources
+* [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 
+* [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues) | Please report any issues that you might have with this experience template! 
 
 ### Preview Images
 ![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01a.png)
@@ -25,7 +27,5 @@ Save Experience Template as an HTML offer and edit configurable fields
 ![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01b.png)
 Leverage Preview Links to see experience template in action
 
-### Resources
-* [Video] (TBD)
-* [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues)
+
 

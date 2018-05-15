@@ -13,6 +13,8 @@ le le le
 
 ### Preview Images
 ![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01a.png)
+-> Save Experience Template as an HTML offer and edit configurable fields <-
+
 
 ![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01b.png)
 

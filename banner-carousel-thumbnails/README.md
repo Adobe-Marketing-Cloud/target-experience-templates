@@ -1,6 +1,6 @@
 # banner-carousel-thumbnails
 
-This experience template is a rotating carousel. there are three configurable fields in this template:
+This experience template is a rotating carousel. There are three configurable fields in this template:
 1. **Image** The image must be hosted on your content delivery network (CDN)
 1. **Text** The text will display under the smaller image
 1. **Link**  The link will be initiated when the larger image is clicked
@@ -11,10 +11,10 @@ This carousel has a maximum image limit of 3 images.
 ### Where to insert
 
 ##### Option 1
-la la la
+This template can be input in to Adobe Target as an HTML Offer and then referenced from Visual Composer or Form Composer by selecting "Swap Offer" from relevent context menus.  To learn more about offers [click here](https://marketing.adobe.com/resources/help/en_US/target/target/c_manage_content.html)
 
 ##### Option 2
-le le le
+This template can also be directly inserted in to Adobe Target in the Visual Experience Composer (VEC) using the "Edit Text/HTML" option when selecting the relevent container. To learn more about the VEC options [click here](https://marketing.adobe.com/resources/help/en_US/target/target/r_viztarget_options.html)
 
 
 ### Preview Images

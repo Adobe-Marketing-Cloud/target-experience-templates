@@ -32,7 +32,7 @@ This template is meant to be directly inserted in to Adobe Target Visual Experie
 * [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues) | Please report any issues that you might have with this experience template! 
 
 ### Preview Images
-Save Experience Template as an HTML offer and edit configurable fields
+Save Experience Template as custom code directly in VEC and edit configurable fields
 ![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-countdown/ext05a.png)
 
 

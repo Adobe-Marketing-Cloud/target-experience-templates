@@ -20,6 +20,8 @@ This template can also be directly inserted in to Adobe Target in the Visual Exp
 
 ### Limits
 * This carousel has a maximum image limit of 3 images.  
+* Images that are 500px high x 800px wide work best.
+* 20 characters or fewer work best in each CTA zone
 
 
 ### Resources

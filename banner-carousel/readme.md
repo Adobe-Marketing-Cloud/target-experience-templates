@@ -26,10 +26,11 @@ This template can also be directly inserted in to Adobe Target in the Visual Exp
 * [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues) | Please report any issues that you might have with this experience template! 
 
 ### Preview Images
-![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01a.png)
 Save Experience Template as an HTML offer and edit configurable fields
+![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel/ext02a.png)
 
 
-![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel-thumbnails/ext01b.png)
 Leverage Preview Links to see experience template in action
+![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/banner-carousel/ext02b.png)
+
 

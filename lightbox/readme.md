@@ -1,9 +1,9 @@
-# lightbox-countdown
+# lightbox
 
 ### Overview
-This experience template is a lightbox overlay popup with a central countdown, commonly used on home pages and landing pages or other high-volume entry pages. 
+This experience template is a lightbox overlay popup with a built in delay, commonly used on home pages and landing pages or other high-volume entry pages. 
 
-There are eight configurable fields in this template:
+There are seven configurable fields in this template:
 1. **Title** The primary headline of the banner
 1. **Subtitle** The secondary copy under the countdown
 1. **Image** The image must be hosted on your content delivery network (CDN)
@@ -11,8 +11,6 @@ There are eight configurable fields in this template:
 1. **Decline Text** Customized link that closes the lightbox
 1. **Link**  The link will be initiated when the larger image is clicked
 1. **Delay** How many seconds to wait before firing the lightbox
-1. **Countdown Date** The date and time to be counted down to and the time zone offset
-
 
 ### How to use
 To use this experience template, copy the entire code sample from "template.html" in this folder into Adobe Target Custom Code editor. After copying in to Adobe Target, you can modify the images, text, and links as needed.
@@ -33,9 +31,9 @@ This template is meant to be directly inserted in to Adobe Target Visual Experie
 
 ### Preview Images
 Save Experience Template as custom code directly in VEC and edit configurable fields
-![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-countdown/ext05a.png)
+![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox/ext07a.png)
 
 
 Leverage Preview Links to see experience template in action
-![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-countdown/ext05b.png)
+![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox/ext07b.png)
 

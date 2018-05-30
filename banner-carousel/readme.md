@@ -1,11 +1,10 @@
 # banner-carousel
 
 ### Overview
-This experience template is a rotating carousel, commonly used on home pages and landing pages or other high-volume entry pages. This carousel will not automatically rotate through the images and can be interacted with directly by clicking the smaller images below the primary image.
+This experience template is a rotating carousel, commonly used on home pages and landing pages or other high-volume entry pages. This carousel will not automatically rotate through the images and can be interacted with directly by clicking the left and right arrows. 
 
 There are three configurable fields in this template:
 1. **Image** The image must be hosted on your content delivery network (CDN)
-1. **Text** The text will display under the smaller image
 1. **Link**  The link will be initiated when the larger image is clicked
 
 
@@ -19,10 +18,8 @@ This template can be input in to Adobe Target as an HTML Offer and then referenc
 This template can also be directly inserted in to Adobe Target in the Visual Experience Composer (VEC) using the "Edit Text/HTML" option when selecting the relevent container. To learn more about the VEC options [click here](https://marketing.adobe.com/resources/help/en_US/target/target/r_viztarget_options.html)
 
 ### Limits
-* This carousel has a maximum image limit of 3 images.  
-* Images that are 500px high x 800px wide work best.
-* 20 characters or fewer work best in each CTA zone
-
+* This carousel has a maximum image limit of 4 images.  
+* Images that are 500px high work best.  THe width will scale with page. 
 
 ### Resources
 * [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 

@@ -19,7 +19,7 @@ This template can also be directly inserted in to Adobe Target in the Visual Exp
 
 ### Limits
 * This carousel has a maximum image limit of 4 images.  
-* Images that are 500px high work best.  THe width will scale with page. 
+* Images that are 500px high work best.  The width will scale with page. 
 
 ### Resources
 * [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 

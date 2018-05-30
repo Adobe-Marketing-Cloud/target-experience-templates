@@ -1,11 +1,11 @@
 # button
 
 ### Overview
-This experience template is a small button with a text call to action,
+This experience template is a small button with a text call to action. The button is configurable and can be placed anywhere on the page to add a new call to action, or replace an existing button with a more configurable alternative. 
 
 There are five configurable fields in this template:
 1. **Text** The primary call to action for the button
-1. **Link ** The URL where the button will lead
+1. **Link** The URL where the button will lead
 1. **Color** The hexdec color code for the button
 1. **Width** The width of the button
 1. **Height**  The height of the button

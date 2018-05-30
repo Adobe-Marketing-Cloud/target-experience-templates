@@ -1,17 +1,14 @@
 # lightbox-exit-intent
 
 ### Overview
-This experience template is a lightbox overlay popup with a central countdown, commonly used on home pages and landing pages or other high-volume entry pages. 
+This experience template is a lightbox overlay popup triggered on exit intent (moving mouse to top right of screen) and can be deployed on any web property where you want a last chance to capture attention. 
 
-There are eight configurable fields in this template:
+There are five configurable fields in this template:
 1. **Title** The primary headline of the banner
 1. **Subtitle** The secondary copy under the countdown
 1. **Image** The image must be hosted on your content delivery network (CDN)
 1. **Button Text** The buttonText is the call to action
-1. **Decline Text** Customized link that closes the lightbox
 1. **Link**  The link will be initiated when the larger image is clicked
-1. **Delay** How many seconds to wait before firing the lightbox
-1. **Countdown Date** The date and time to be counted down to and the time zone offset
 
 
 ### How to use
@@ -25,7 +22,6 @@ This template is meant to be directly inserted in to Adobe Target Visual Experie
 * The subtitle should be under 80 characters.
 * The image asset should be about 400px wide and 500px tall
 * The CTA should be under 30 characters.
-* The decline text should be under 30 characters
 
 ### Resources
 * [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 
@@ -33,9 +29,9 @@ This template is meant to be directly inserted in to Adobe Target Visual Experie
 
 ### Preview Images
 Save Experience Template as custom code directly in VEC and edit configurable fields
-![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-countdown/ext05a.png)
+![Screenshot 1](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-exit-intent/ext06a.png)
 
 
 Leverage Preview Links to see experience template in action
-![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-countdown/ext05b.png)
+![Screenshot 2](https://raw.githubusercontent.com/Adobe-Marketing-Cloud/target-experience-templates/master/lightbox-exit-intent/ext06b.png)
 

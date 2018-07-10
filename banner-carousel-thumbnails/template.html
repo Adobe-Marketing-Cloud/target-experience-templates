@@ -1,4 +1,3 @@
-
 <div id="att_banner_thumbnails"></div><script>
 // Banner - Carousel Thumbnails
 var att_config = {
@@ -8,119 +7,29 @@ var att_config = {
   // each link must be surrounded by quotes. Links should be comma separated.
   //
   // This carousel has a maximum image limit of 3 images.
+  // Images that are 500px high x 800px wide work best.
   thumbnails: [
     {
       image: "https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_60946241.jpeg",
+      // 20 characters or less for best results.
       text: "See this photo",
       link: "https://www.adobe.com/marketing-cloud/target.html"
     },
     {
       image: "https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_199096258.jpeg",
+      // 20 characters or less for best results.
       text: "Join our event",
       link: "https://www.adobe.com/marketing-cloud/target.html"
     },
     {
       image: "https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_81180767.jpeg",
+      // 20 characters or less for best results.
       text: "Don't miss this sale",
       link: "https://www.adobe.com/marketing-cloud/target.html"
     }
   ]
   // =========================== END USER DEFINED CONFIGURATION ===========================
 };
-
-
-
-
-(function(){'use strict';
-
-// Element.closest() polyfill
-if (!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-
-if (!Element.prototype.closest) Element.prototype.closest = function (s) {
-  var el = this;
-  if (!document.documentElement.contains(el)) return null;
-  do {
-    if (el.matches(s)) return el;
-    el = el.parentElement || el.parentNode;
-  } while (el !== null && el.nodeType === 1);
-  return null;
-};
-
-var thumbnails = att_config.thumbnails != null && att_config.thumbnails ? att_config.thumbnails : [];
-
-var thumbnailHtml = "<div class='att_image_thumbnails'>";
-for (var i = 0; i < thumbnails.length; i++) {
-  var thumbnail = thumbnails[i];
-  thumbnailHtml += '<div class="att_image_thumbnail att_image_thumbnail_' + i + '" data-idx="' + i + '"">\n    <div style="background-image:url(' + thumbnail.image + ')"></div>\n    <p>' + thumbnail.text + '</p>\n  </div>';
-}
-
-var template = '\n<div class="att_banner_thumbnails_container">\n  <div class="att_banner_thumbnails_content">\n    <a href="' + thumbnails[0].link + '" target="_blank" rel="nofollow nooopener"><img class="att_image_main" src="' + thumbnails[0].image + '"></img></a>\n    ' + thumbnailHtml + '\n  </div>\n</div>\n';
-
-var style = '\n.att_banner_thumbnails_container * {\n  font-family: helvetica, arial, sans-serif;\n}\n.att_banner_thumbnails_container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 800px;\n  width: 100%;\n}\n.att_banner_thumbnails_content {\n  max-width: 950px;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 5px;\n}\n.att_banner_thumbnails_content a {\n  max-width: 800px;\n  height: 500px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.att_image_main {\n  width: 100%;\n  max-height: 550px;\n  background-size: cover;\n  background-position: center;\n}\n.att_banner_thumbnails_content a {\n  height: 550px;\n  margin: 0;\n  padding: 0;\n}\n.att_image_thumbnails {\n  height: 200px;\n  width: 100%;\n  max-width: 950px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items; center;\n}\n.att_image_thumbnail {\n  width: 100%;\n  max-width: calc(950px / 3);\n  max-height: 170px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n}\n.att_image_thumbnails div {\n  height: 100%;\n  width: 100%;\n  background-size: cover;\n  background-position: center;\n  z-index: 2;\n}\n.att_image_thumbnails p {\n  margin: 6px 0 0 0;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n.att_active {\n  background-color: #0585FF;\n  color: #fff;\n}\n.att_active::before {\n  content: \'\';\n  position: absolute;\n  top: -8px;\n  left: 50%;\n  transform: translate(-50%, 0) rotate(45deg);\n  width: 16px;\n  height: 16px;\n  background-color: #0585FF;\n  z-index: 1;\n}\n';
-
-var handlers = function handlers() {
-  // Set initial image
-  setImage(0);
-
-  document.querySelectorAll('.att_image_thumbnail').forEach(function (ele) {
-    ele.addEventListener('click', function (event) {
-      var target = event.target || event.srcElement;
-      var targetEl = target.closest('.att_image_thumbnail');
-      var idx = targetEl.dataset.idx != null && targetEl.dataset.idx ? targetEl.dataset.idx : 0;
-      setImage(idx);
-    });
-  });
-
-  function setImage(idx) {
-    att_config.active = idx;
-    var active = att_config.thumbnails[att_config.active];
-    // Set main image
-    document.querySelector('.att_image_main').src = active.image;
-    // Remove active class
-    document.querySelectorAll('.att_image_thumbnail').forEach(function (ele) {
-      ele.classList.remove('att_active');
-    });
-    // Set active class
-    document.querySelector('.att_image_thumbnail_' + idx).classList.add('att_active');
-  }
-};
-
-injector({
-  el: document.getElementById('att_banner_thumbnails'),
-  template: template,
-  style: style,
-  handlers: handlers
-});
-'use strict';
-
-/**
- * Injects template code into page
- * Pass in the following attributes:
- *  params.name = 'Template Name'
- *  params.template = `Html template goes here`
- *  params.style = `CSS Styles goes here, will be placed inside style tag`
- *  params.handlers = function () {execute all handlers here}
- *
- * @param {Object} params
- */
-function injector(params) {
-  // Inject the template
-  var templateTarget = params.el != null && params.el ? params.el : document.body;
-  var templateContainer = document.createElement('div');
-  if (params.templateClass) {
-    templateContainer.classList.add(params.templateClass);
-  }
-  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  templateTarget.appendChild(templateContainer);
-
-  // Inject the css
-  var cssContainer = document.createElement('style');
-  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  document.head.appendChild(cssContainer);
-
-  // Register the handlers
-  if (params.handlers != null && typeof params.handlers === 'function') {
-    params.handlers();
-  }
-}})();
+(function(){"use strict";Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector),Element.prototype.closest||(Element.prototype.closest=function(n){var t=this;if(!document.documentElement.contains(t))return null;do{if(t.matches(n))return t;t=t.parentElement||t.parentNode}while(null!==t&&1===t.nodeType);return null});for(var thumbnails=null!=att_config.thumbnails&&att_config.thumbnails?att_config.thumbnails:[],thumbnailHtml="<div class='att_image_thumbnails'>",i=0;i<thumbnails.length;i++){var thumbnail=thumbnails[i];thumbnailHtml+='<div class="att_image_thumbnail att_image_thumbnail_'+i+'" data-idx="'+i+'"">\n    <div style="background-image:url('+thumbnail.image+')"></div>\n    <p>'+thumbnail.text+"</p>\n  </div>"}var template='\n<div class="att_banner_thumbnails_container">\n  <div class="att_banner_thumbnails_content">\n    <a href="'+thumbnails[0].link+'" target="_blank" rel="nofollow nooopener"><img class="att_image_main" src="'+thumbnails[0].image+'"></img></a>\n    '+thumbnailHtml+"\n  </div>\n</div>\n",style="\n.att_banner_thumbnails_container * {\n  font-family: helvetica, arial, sans-serif;\n}\n.att_banner_thumbnails_container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 800px;\n  width: 100%;\n}\n.att_banner_thumbnails_content {\n  max-width: 950px;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 5px;\n}\n.att_banner_thumbnails_content a {\n  max-width: 800px;\n  height: 500px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.att_image_main {\n  width: 100%;\n  max-height: 550px;\n  background-size: cover;\n  background-position: center;\n}\n.att_banner_thumbnails_content a {\n  height: 550px;\n  margin: 0;\n  padding: 0;\n}\n.att_image_thumbnails {\n  height: 200px;\n  width: 100%;\n  max-width: 950px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items; center;\n}\n.att_image_thumbnail {\n  width: 100%;\n  max-width: calc(950px / 3);\n  max-height: 170px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n}\n.att_image_thumbnails div {\n  height: 100%;\n  width: 100%;\n  background-size: cover;\n  background-position: center;\n  z-index: 2;\n}\n.att_image_thumbnails p {\n  margin: 6px 0 0 0;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n.att_active {\n  background-color: #0585FF;\n  color: #fff;\n}\n.att_active::before {\n  content: '';\n  position: absolute;\n  top: -8px;\n  left: 50%;\n  transform: translate(-50%, 0) rotate(45deg);\n  width: 16px;\n  height: 16px;\n  background-color: #0585FF;\n  z-index: 1;\n}\n",handlers=function(){function e(n){att_config.active=n;var t=att_config.thumbnails[att_config.active];document.querySelector(".att_image_main").src=t.image,document.querySelectorAll(".att_image_thumbnail").forEach(function(n){n.classList.remove("att_active")}),document.querySelector(".att_image_thumbnail_"+n).classList.add("att_active")}e(0),document.querySelectorAll(".att_image_thumbnail").forEach(function(n){n.addEventListener("click",function(n){var t=(n.target||n.srcElement).closest(".att_image_thumbnail");e(null!=t.dataset.idx&&t.dataset.idx?t.dataset.idx:0)})})};injector({el:document.getElementById("att_banner_thumbnails"),template:template,style:style,handlers:handlers});
+"use strict";function injector(e){var t=null!=e.el&&e.el?e.el:document.body,l=document.createElement("div");e.templateClass&&l.classList.add(e.templateClass),l.innerHTML=null!=e.template&&e.template?e.template.replace(/(\r\n\t|\n|\r\t)/gm,""):"",t.appendChild(l);var n=document.createElement("style");n.innerText=null!=e.style&&e.style?e.style.replace(/(\r\n\t|\n|\r\t)/gm,""):"",document.head.appendChild(n),null!=e.handlers&&"function"==typeof e.handlers&&e.handlers()}})();
 </script>

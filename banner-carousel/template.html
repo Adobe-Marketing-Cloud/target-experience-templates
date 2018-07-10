@@ -1,142 +1,33 @@
-
-<div id="att_banner_thumbnails"></div><script>
+<div id="att_banner_carousel"></div><script>
 // Banner - Carousel
 var att_config = {
   // =========================== USER DEFINED CONFIGURATION ===========================
-  // Host your images and place the URLs for the images below. These links
+  // Host your images and place the URLs for the images below. These images
   // must be direct links to the image file (it should end in .jpg, .png, etc.) and
   // each link must be surrounded by quotes. Links should be comma separated.
+  // Keep the images at least 500px high. Width will scale with page.
+  // By adding a url to the link property below, when an image in the carousel is clicked,
+  // it will open the link in a new tab/window.
   images: [
-    'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_109044927.jpeg',
-    'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_119888114.jpeg',
-    'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_124634376.jpeg',
-    'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_199096258.jpeg',
+    {
+      image: 'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_109044927.jpeg',
+      link: 'https://www.adobe.com/marketing-cloud/target.html'
+    },
+    {
+      image: 'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_119888114.jpeg',
+      link: 'https://www.adobe.com/marketing-cloud/target.html'
+    },
+    {
+      image: 'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_124634376.jpeg',
+      link: 'https://www.adobe.com/marketing-cloud/target.html'
+    },
+    {
+      image: 'https://patleeman.github.io/AdobeTT-Templates/images/AdobeStock_199096258.jpeg',
+      link: 'https://www.adobe.com/marketing-cloud/target.html'
+    },
   ]
   // =========================== END USER DEFINED CONFIGURATION ===========================
 };
-
-
-
-(function(){'use strict';
-
-// Element.closest() polyfill
-if (!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-
-if (!Element.prototype.closest) Element.prototype.closest = function (s) {
-  var el = this;
-  if (!document.documentElement.contains(el)) return null;
-  do {
-    if (el.matches(s)) return el;
-    el = el.parentElement || el.parentNode;
-  } while (el !== null && el.nodeType === 1);
-  return null;
-};
-
-var images = att_config.images != null && att_config.images ? att_config.images : [];
-
-var arrow_left = '<svg class="att_arrow" id="att_arrow_left" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><style>.a{stroke-width:2;stroke:#F6F6F6;}</style><g fill="none"><circle class="att_arrow_bg" cx="25" cy="25" r="25" style="fill:#221E1F;opacity:0.7"/><path d="M27.6 14.4L17.1 24.9" class="a"/><path d="M27.6 35.6L17.1 25.1" class="a"/></g></svg>';
-var arrow_right = '<svg class="att_arrow" id="att_arrow_right" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><style>.a{stroke-width:2;stroke:#F6F6F6;}</style><g fill="none"><g transform="translate(-1183 -214)translate(133 214)"><circle class="att_arrow_bg" cx="1075" cy="25" r="25" style="fill:#221E1F;opacity:0.7"/><path d="M1071.4 14.4L1081.9 24.9" class="a"/><polyline transform="translate(1076.634225 30.365775)scale(1 -1)translate(-1076.634225 -30.365775)" points="1071.4 25.1 1076.6 30.4 1081.9 35.6" class="a"/></g></g></svg>';
-var dot = '\n<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n        <g class="att_dot_color" transform="translate(-702.000000, -454.000000)" fill="#D8D8D8">\n            <g id="Group" transform="translate(133.000000, 214.000000)">\n                <circle id="Oval-Copy-2" cx="576.5" cy="247.5" r="7.5"></circle>\n            </g>\n        </g>\n    </g>\n</svg>';
-
-// Generate dots
-var dots = '<div id="att_dots">';
-for (var i = 0; i < images.length; i++) {
-  dots += '<div class="att_dot_' + i + ' att_dot" data-idx="' + i + '">' + dot + '</div>';
-}
-dots += '</div>';
-
-var template = '\n<div class="att_banner_carousel">\n  ' + arrow_left + '\n  ' + arrow_right + '\n  ' + dots + '\n  <div class="att_image_container"></div>\n</div>\n';
-
-var style = '\n.att_banner_carousel * {\n  font-family: helvetica, arial, sans-serif;\n}\n.att_banner_carousel {\n  width: 100%;\n  height: 500px;\n  max-height: 500px;\n  margin: 0;\n  padding: 0;\n  position: relative;\n  display: block;\n}\n.att_image_container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  background-size: cover;\n  background-position: center;\n  z-index: -1;\n}\n#att_arrow_left {\n  display: block;\n  position: absolute;\n  left: 10%;\n  top: 50%;\n  transform: translate(0, -50%);\n}\n#att_arrow_right {\n  display: block;\n  position: absolute;\n  right: 10%;\n  top: 50%;\n  transform: translate(0, -50%);\n}\n.att_arrow:hover {\n  cursor: pointer;\n}\n.att_arrow:hover .att_arrow_bg {\n  opacity: 0.5;\n}\n#att_dots {\n  position: absolute;\n  bottom: 10%;\n  left: 50%;\n  transform: translate(-50%, 0);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: row;\n}\n.att_dot {\n  margin: 3px;\n  cursor: pointer;\n}\n';
-
-var handlers = function handlers() {
-  att_config.active = 0;
-  setActiveImage(att_config.active);
-
-  document.getElementById('att_arrow_right').addEventListener('click', function () {
-    next();
-  });
-  document.getElementById('att_arrow_left').addEventListener('click', function () {
-    prev();
-  });
-
-  function setActiveImage(idx) {
-    var url = att_config.images[idx];
-    // Set the background image
-    document.querySelector('.att_image_container').style.backgroundImage = 'url(' + url + ')';
-    // Reset the colors for all active dots
-    document.querySelectorAll('.att_dot .att_dot_color').forEach(function (ele) {
-      ele.style.fill = '#D8D8D8';
-    });
-    // Set active dot
-    document.querySelector('.att_dot_' + idx + ' .att_dot_color').style.fill = '#4A4A4A';
-
-    document.querySelectorAll('.att_dot').forEach(function (ele) {
-      ele.addEventListener('click', function (event) {
-        var target = event.target || event.srcElement;
-        var dotEl = target.closest('.att_dot');
-        var idx = dotEl.dataset.idx != null && dotEl.dataset.idx ? dotEl.dataset.idx : 0;
-        att_config.active = idx;
-        setActiveImage(idx);
-      });
-    });
-  }
-
-  function next() {
-    if (att_config.active >= att_config.images.length - 1) {
-      att_config.active = 0;
-    } else {
-      att_config.active++;
-    }
-    setActiveImage(att_config.active);
-  }
-
-  function prev() {
-    if (att_config.active <= 0) {
-      att_config.active = att_config.images.length - 1;
-    } else {
-      att_config.active--;
-    }
-    setActiveImage(att_config.active);
-  }
-};
-
-injector({
-  el: document.getElementById('att_banner_carousel'),
-  template: template,
-  style: style,
-  handlers: handlers
-});
-'use strict';
-
-/**
- * Injects template code into page
- * Pass in the following attributes:
- *  params.name = 'Template Name'
- *  params.template = `Html template goes here`
- *  params.style = `CSS Styles goes here, will be placed inside style tag`
- *  params.handlers = function () {execute all handlers here}
- *
- * @param {Object} params
- */
-function injector(params) {
-  // Inject the template
-  var templateTarget = params.el != null && params.el ? params.el : document.body;
-  var templateContainer = document.createElement('div');
-  if (params.templateClass) {
-    templateContainer.classList.add(params.templateClass);
-  }
-  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  templateTarget.appendChild(templateContainer);
-
-  // Inject the css
-  var cssContainer = document.createElement('style');
-  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  document.head.appendChild(cssContainer);
-
-  // Register the handlers
-  if (params.handlers != null && typeof params.handlers === 'function') {
-    params.handlers();
-  }
-}})();
+(function(){"use strict";Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector),Element.prototype.closest||(Element.prototype.closest=function(t){var n=this;if(!document.documentElement.contains(n))return null;do{if(n.matches(t))return n;n=n.parentElement||n.parentNode}while(null!==n&&1===n.nodeType);return null});for(var images=null!=att_config.images&&att_config.images?att_config.images:[],arrow_left='<svg class="att_arrow" id="att_arrow_left" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><style>.a{stroke-width:2;stroke:#F6F6F6;}</style><g fill="none"><circle class="att_arrow_bg" cx="25" cy="25" r="25" style="fill:#221E1F;opacity:0.7"/><path d="M27.6 14.4L17.1 24.9" class="a"/><path d="M27.6 35.6L17.1 25.1" class="a"/></g></svg>',arrow_right='<svg class="att_arrow" id="att_arrow_right" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><style>.a{stroke-width:2;stroke:#F6F6F6;}</style><g fill="none"><g transform="translate(-1183 -214)translate(133 214)"><circle class="att_arrow_bg" cx="1075" cy="25" r="25" style="fill:#221E1F;opacity:0.7"/><path d="M1071.4 14.4L1081.9 24.9" class="a"/><polyline transform="translate(1076.634225 30.365775)scale(1 -1)translate(-1076.634225 -30.365775)" points="1071.4 25.1 1076.6 30.4 1081.9 35.6" class="a"/></g></g></svg>',dot='\n<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n        <g class="att_dot_color" transform="translate(-702.000000, -454.000000)" fill="#D8D8D8">\n            <g id="Group" transform="translate(133.000000, 214.000000)">\n                <circle id="Oval-Copy-2" cx="576.5" cy="247.5" r="7.5"></circle>\n            </g>\n        </g>\n    </g>\n</svg>',dots='<div id="att_dots">',i=0;i<images.length;i++)dots+='<div class="att_dot_'+i+' att_dot" data-idx="'+i+'">'+dot+"</div>";var template='\n<div class="att_banner_carousel">\n  '+arrow_left+"\n  "+arrow_right+"\n  "+(dots+="</div>")+'\n  <a class="att_image_container" href="#" target="_blank" rel="noopener noreferrer"></a>\n</div>\n',style="\n.att_banner_carousel * {\n  font-family: helvetica, arial, sans-serif;\n}\n.att_banner_carousel {\n  width: 100%;\n  height: 500px;\n  max-height: 500px;\n  margin: 0;\n  padding: 0;\n  position: relative;\n  display: block;\n}\n.att_image_container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  background-size: cover;\n  background-position: center;\n  z-index: 0;\n}\n#att_arrow_left {\n  display: block;\n  position: absolute;\n  left: 10%;\n  top: 50%;\n  transform: translate(0, -50%);\n  z-index: 1;\n}\n#att_arrow_right {\n  display: block;\n  position: absolute;\n  right: 10%;\n  top: 50%;\n  transform: translate(0, -50%);\n  z-index: 1;\n}\n.att_arrow:hover {\n  cursor: pointer;\n}\n.att_arrow:hover .att_arrow_bg {\n  opacity: 0.5;\n}\n#att_dots {\n  position: absolute;\n  bottom: 10%;\n  left: 50%;\n  transform: translate(-50%, 0);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: row;\n  z-index: 1;\n}\n.att_dot {\n  margin: 3px;\n  cursor: pointer;\n}\n",handlers=function(){function a(t){var n=att_config.images[t],e=document.querySelector(".att_image_container");e.style.backgroundImage="url("+n.image+")",null!=n.link&&n.link&&(e.setAttribute("href",n.link),e.setAttribute("title","Open "+n.link)),document.querySelectorAll(".att_dot .att_dot_color").forEach(function(t){t.style.fill="#D8D8D8"}),document.querySelector(".att_dot_"+t+" .att_dot_color").style.fill="#4A4A4A",document.querySelectorAll(".att_dot").forEach(function(t){t.addEventListener("click",function(t){var n=(t.target||t.srcElement).closest(".att_dot"),e=null!=n.dataset.idx&&n.dataset.idx?n.dataset.idx:0;a(att_config.active=e)})})}att_config.active=0,a(att_config.active),document.getElementById("att_arrow_right").addEventListener("click",function(){!function(){att_config.active>=att_config.images.length-1?att_config.active=0:att_config.active++;a(att_config.active)}()}),document.getElementById("att_arrow_left").addEventListener("click",function(){!function(){att_config.active<=0?att_config.active=att_config.images.length-1:att_config.active--;a(att_config.active)}()})};injector({el:document.getElementById("att_banner_carousel"),template:template,style:style,handlers:handlers});
+"use strict";function injector(e){var t=null!=e.el&&e.el?e.el:document.body,l=document.createElement("div");e.templateClass&&l.classList.add(e.templateClass),l.innerHTML=null!=e.template&&e.template?e.template.replace(/(\r\n\t|\n|\r\t)/gm,""):"",t.appendChild(l);var n=document.createElement("style");n.innerText=null!=e.style&&e.style?e.style.replace(/(\r\n\t|\n|\r\t)/gm,""):"",document.head.appendChild(n),null!=e.handlers&&"function"==typeof e.handlers&&e.handlers()}})();
 </script>

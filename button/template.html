@@ -1,99 +1,18 @@
-
 <a id="att_button" class="att_button" target="_blank" rel="nofollow noopener"></a><script>
 // Button
 var att_config = {
   // =========================== USER DEFINED CONFIGURATION ===========================
-
   // The button text should provide clear instructions. Keep it under 30 characters for maximum impact.
   buttonText: "GO HERE",
-
   // Once the customer has clicked, where do you want to redirect them?
   buttonLink: "https://www.adobe.com/marketing-cloud/target.html",
-
   buttonColor: '#388E3C',
-
-  // Button width in pixels
+  // Button width in pixels.
   buttonWidth: 120,
-
   // Button height in pixels
   buttonHeight: 40
-
   // =========================== END USER DEFINED CONFIGURATION ===========================
 };
-
-
-(function(){'use strict';
-
-var buttonText = att_config.buttonText != null && att_config.buttonText ? att_config.buttonText : '';
-var buttonLink = att_config.buttonLink != null && att_config.buttonLink ? att_config.buttonLink : '';
-var buttonColor = att_config.buttonColor != null && att_config.buttonColor ? att_config.buttonColor : '';
-var hoverColor = LightenDarkenColor(buttonColor, -20);
-var activeColor = LightenDarkenColor(buttonColor, 20);
-var buttonWidth = att_config.buttonWidth != null && att_config.buttonWidth ? att_config.buttonWidth : '120';
-var buttonHeight = att_config.buttonHeight != null && att_config.buttonHeight ? att_config.buttonHeight : '40';
-
-var template = '';
-
-var style = '\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: ' + buttonHeight + 'px;\n  width: ' + buttonWidth + 'px;\n  background-color: ' + buttonColor + ';\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: ' + hoverColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: ' + activeColor + ';\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n';
-
-var handlers = function handlers() {
-  // Set up button
-  var button = document.getElementById('att_button');
-  button.textContent = buttonText;
-  button.href = buttonLink;
-};
-
-injector({
-  template: template,
-  style: style,
-  handlers: handlers
-});
-
-function LightenDarkenColor(col, amt) {
-  var usePound = true;
-  if (col[0] == "#") {
-    col = col.slice(1);
-    usePound = true;
-  }
-  var num = parseInt(col, 16);
-  var r = (num >> 16) + amt;
-  if (r > 255) r = 255;else if (r < 0) r = 0;
-  var b = (num >> 8 & 0x00FF) + amt;
-  if (b > 255) b = 255;else if (b < 0) b = 0;
-  var g = (num & 0x0000FF) + amt;
-  if (g > 255) g = 255;else if (g < 0) g = 0;
-  return (usePound ? "#" : "") + (g | b << 8 | r << 16).toString(16);
-}
-'use strict';
-
-/**
- * Injects template code into page
- * Pass in the following attributes:
- *  params.name = 'Template Name'
- *  params.template = `Html template goes here`
- *  params.style = `CSS Styles goes here, will be placed inside style tag`
- *  params.handlers = function () {execute all handlers here}
- *
- * @param {Object} params
- */
-function injector(params) {
-  // Inject the template
-  var templateTarget = params.el != null && params.el ? params.el : document.body;
-  var templateContainer = document.createElement('div');
-  if (params.templateClass) {
-    templateContainer.classList.add(params.templateClass);
-  }
-  templateContainer.innerHTML = params.template != null && params.template ? params.template.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  templateTarget.appendChild(templateContainer);
-
-  // Inject the css
-  var cssContainer = document.createElement('style');
-  cssContainer.innerText = params.style != null && params.style ? params.style.replace(/(\r\n\t|\n|\r\t)/gm, "") : '';
-  document.head.appendChild(cssContainer);
-
-  // Register the handlers
-  if (params.handlers != null && typeof params.handlers === 'function') {
-    params.handlers();
-  }
-}})();
+(function(){"use strict";var buttonText=null!=att_config.buttonText&&att_config.buttonText?att_config.buttonText:"",buttonLink=null!=att_config.buttonLink&&att_config.buttonLink?att_config.buttonLink:"",buttonColor=null!=att_config.buttonColor&&att_config.buttonColor?att_config.buttonColor:"",hoverColor=LightenDarkenColor(buttonColor,-20),activeColor=LightenDarkenColor(buttonColor,20),buttonWidth=null!=att_config.buttonWidth&&att_config.buttonWidth?att_config.buttonWidth:"120",buttonHeight=null!=att_config.buttonHeight&&att_config.buttonHeight?att_config.buttonHeight:"40",template="",style="\n.att_button {\n  font-family: Helvetica, Arial, sans-serif;\n  height: "+buttonHeight+"px;\n  width: "+buttonWidth+"px;\n  background-color: "+buttonColor+";\n  color: white;\n  border-radius: 2px;\n  text-decoration: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11pt;\n  margin: 10px;\n}\n.att_button:hover {\n  background-color: "+hoverColor+";\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button:active {\n  background-color: "+activeColor+";\n  text-decoration: none;\n  cursor: pointer;\n}\n.att_button[disabled=disabled],\n.att_button:disabled {\n  background-color: #D8D8D8;\n  text-decoration: none;\n}\n",handlers=function(){var t=document.getElementById("att_button");t.textContent=buttonText,t.href=buttonLink};function LightenDarkenColor(t,n){var o=!0;"#"==t[0]&&(t=t.slice(1),o=!0);var e=parseInt(t,16),i=(e>>16)+n;255<i?i=255:i<0&&(i=0);var r=(e>>8&255)+n;255<r?r=255:r<0&&(r=0);var a=(255&e)+n;return 255<a?a=255:a<0&&(a=0),(o?"#":"")+(a|r<<8|i<<16).toString(16)}injector({template:template,style:style,handlers:handlers});
+"use strict";function injector(e){var t=null!=e.el&&e.el?e.el:document.body,l=document.createElement("div");e.templateClass&&l.classList.add(e.templateClass),l.innerHTML=null!=e.template&&e.template?e.template.replace(/(\r\n\t|\n|\r\t)/gm,""):"",t.appendChild(l);var n=document.createElement("style");n.innerText=null!=e.style&&e.style?e.style.replace(/(\r\n\t|\n|\r\t)/gm,""):"",document.head.appendChild(n),null!=e.handlers&&"function"==typeof e.handlers&&e.handlers()}})();
 </script>

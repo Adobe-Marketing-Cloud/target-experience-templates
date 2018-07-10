@@ -3,12 +3,13 @@
 ### Overview
 This experience template is a lightbox overlay popup triggered on exit intent (moving mouse to top right of screen) and can be deployed on any web property where you want a last chance to capture attention. 
 
-There are five configurable fields in this template:
+There are six configurable fields in this template:
 1. **Title** The primary headline of the banner
 1. **Subtitle** The secondary copy under the countdown
 1. **Image** The image must be hosted on your content delivery network (CDN)
 1. **Button Text** The buttonText is the call to action
 1. **Link**  The link will be initiated when the larger image is clicked
+1. **Background Close**   Set to true to close lightbox when the area outside the lightbox is clicked.
 
 
 ### How to use

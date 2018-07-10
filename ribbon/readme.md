@@ -3,11 +3,12 @@
 ### Overview
 This experience template is a 100% width ribbon that inserts at the very top of the web page, typically used to indicate a flash sale, free shipping, safety or weather event, or other imporant announcement. 
 
-There are four configurable fields in this template:
+There are five configurable fields in this template:
 1. **Text** The primary copy of the ribbon
 1. **Link Text** The link call to action
 1. **Link**  The link will be initiated when the larger image is clicked
 1. **Color** The background color of the ribbon.  Note that the default text is white. 
+1. **Text Color** The text color to contrast the ribbon color.
 
 
 ### How to use

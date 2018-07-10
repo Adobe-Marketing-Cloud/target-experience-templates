@@ -12,7 +12,7 @@ There are eight configurable fields in this template:
 1. **Link**  The link will be initiated when the larger image is clicked
 1. **Delay** How many seconds to wait before firing the lightbox
 1. **Countdown Date** The date and time to be counted down to and the time zone offset
-
+1. **Background Close**   Set to true to close lightbox when the area outside the lightbox is clicked.
 
 ### How to use
 To use this experience template, copy the entire code sample from "template.html" in this folder into Adobe Target Custom Code editor. After copying in to Adobe Target, you can modify the images, text, and links as needed.

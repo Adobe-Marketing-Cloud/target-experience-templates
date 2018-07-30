@@ -22,4 +22,4 @@ These experience templates are provided free to developers and marketers as a st
 
 This repository is a work in progress and feedback and contribution is most welcome!
 
-- Adobe Target Team 
+-The Adobe Target Team 

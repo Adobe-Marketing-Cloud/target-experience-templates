@@ -27,7 +27,6 @@ This template is meant to be directly inserted in to Adobe Target Visual Experie
 * The decline text should be under 30 characters
 
 ### Resources
-* [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 
 * [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues) | Please report any issues that you might have with this experience template! 
 
 ### Preview Images

@@ -22,7 +22,6 @@ This template can also be directly inserted in to Adobe Target in the Visual Exp
 * Images that are 500px high work best.  The width will scale with page. 
 
 ### Resources
-* [Video](TBD) | Watch this video to see an end to end demonstration of this experience templtae in action. 
 * [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues) | Please report any issues that you might have with this experience template! 
 
 ### Preview Images

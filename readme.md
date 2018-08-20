@@ -2,7 +2,7 @@
 
 Adobe Target Experience Templates are pre-coded samples with configurable inputs to be used in Adobe Targe to execute some common  marketer use cases.
 
-These experience templates are provided free to developers and marketers as a starting point to execute some common external use cases in Adobe Target - either via the Visual Experience Composer or Form Composer. Customization may be required to integrate successfully with your webpage or platform architecture.
+These experience templates are provided free to developers and marketers as a starting point to execute some common external use cases in Adobe Target - either via the Visual Experience Composer or Form Composer. Customization may be required to integrate successfully with your webpage or platform architecture. Some templates may not be compatible with Internet Explorer.
 
 ### Templates
 1. [Banner Carousel with thumbnails](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/tree/master/banner-carousel-thumbnails)
@@ -15,11 +15,9 @@ These experience templates are provided free to developers and marketers as a st
 8. [Top of page Ribbon](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/tree/master/ribbon)
 
 ### Resources
-* [Demos] - coming soon
 * [Issues](https://github.com/Adobe-Marketing-Cloud/target-experience-templates/issues)
 
 
-
-This repository is a work in progress and feedback and contribution is most welcome!
+This repository is a work in progress and feedback and contribution is most welcome! Note: banner templates may not be compatible with certain versions of Internet Explorer. 
 
 -The Adobe Target Team 
